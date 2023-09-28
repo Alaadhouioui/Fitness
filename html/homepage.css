@@ -1,0 +1,772 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Top Navigation styles */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  color: #fff;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-nav h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 5px;
+}
+
+.nav-links li a {
+  color: #fff;
+  margin-left: 30px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #f39c12; /* Orange on hover */
+}
+
+/* Styles for the hero section */
+.hero {
+  height: 100vh; /* Full viewport height */
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  position: relative;
+  margin-top: 0; /* Add this to remove the default margin */
+  margin-bottom: 10px; /* Add margin between slides */
+
+}
+
+.hero img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px rgba(30, 155, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(30, 155, 255, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(30, 155, 255, 0.8);
+  }
+}
+
+.hero h2 {
+  font-size: 60px; /* Changed font size */
+  margin-bottom: 20px;
+  margin-left: 400px;
+  animation: glow 2s infinite alternate; /* Add the animation */
+}
+
+.hero p {
+  font-size: 30px; /* Changed font size */
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-left: 350px;
+  animation: glow 2s infinite alternate; /* Add the animation */
+}
+/* Your existing CSS */
+.social {
+  position: fixed; /* Use "fixed" instead of "absolute" to keep it fixed on the viewport */
+  left: -5px;
+  bottom: 300px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  z-index: 999; /* Set a high z-index value to ensure it appears on top of other elements */
+}
+.social.sticky {
+  position: fixed; /* Use "fixed" instead of "absolute" to keep it fixed on the viewport */
+  left: -5px;
+  bottom: 300px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  z-index: 999; /* Set a high z-index value to ensure it appears on top of other elements */
+}
+
+.social ul {
+  padding: 0;
+}
+
+.social ul li {
+  position: relative;
+  display: block;
+  margin: 5px;
+  width: 100px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0 30px 30px 0;
+  background: black;
+  transition: all 1s;
+}
+
+.social ul li:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.social ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social ul li .icon-wrapper {
+  display: inline-block;
+  transition: all 1s;
+}
+
+.social ul li:hover .icon-wrapper i {
+  transform: translate(100px, 0); /* Adjust the positioning as needed */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glowing effect */
+}
+
+.social ul li i {
+  margin-left: 10px;
+  color: #000;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+/* Styles for sections and slides */
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Slide styles */
+.slide {
+  flex: 1;
+  height: 100vh; /* Set the height of each slide to the full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px); /* Move the slides down initially */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow-y: auto;
+  margin-bottom: 10px; /* Add margin between slides */
+
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+.slide-content {
+
+background: rgba(0, 0, 0, 0.42);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+border: 1px solid rgba(0, 0, 0, 0.77);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  text-align: center;
+}
+
+.slide.active .slide-content {
+  opacity: 1;
+  visibility: visible;
+  margin-bottom: 30px;
+}
+
+.slide-content h2,
+.slide-content p {
+  color: #fff;
+  margin: 0;
+}
+
+.slide-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.slide-content p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+#hero-slide {
+  z-index: 3;
+}
+
+#coaches-slide {
+  z-index: 2;
+}
+
+#payment-slide {
+  z-index: 1;
+}
+
+/* Slide backgrounds */
+#coaches-slide {
+  background-image: url("coache.jpg");
+}
+
+#coaches-slide .slide-content {
+  max-width: 800px;
+  padding: 50px;
+}
+
+#coaches-slide h2 {
+  color: white;
+  font-size: 48px;
+  margin-bottom: 40px;
+  animation: glow 2s infinite alternate;
+  text-shadow: 0 0 10px rgba(30, 155, 255, 0.6); /* Lower glow */
+}
+
+.coaches-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.coach-card {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.coach-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  padding-top: 10px; /* Add top padding to the image */
+}
+
+.coach-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially hidden */
+}
+
+.coach-card:hover {
+  transform: scale(1.05);
+}
+
+.coach-card:hover .coach-info {
+  transform: translateY(0);
+  opacity: 1; /* Display on hover */
+  visibility: visible; /* Display on hover */
+}
+
+.coach-info h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.coach-info p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.coach-card .glowing-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  background-color: #f39c12;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 18px;
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.coach-card:hover .glowing-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.coach-card .glowing-btn .glow {
+  /* The same glowing effect as the hero button */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: #f39c12;
+  pointer-events: none;
+}
+
+.coach-card .glowing-btn:hover .glow {
+  opacity: 1;
+}
+
+#yoga-slide {
+  background-image: url("yoga.jpg");
+}
+#payment-slide {
+  background-image: url("payment.png");
+}
+
+#payment-slide .slide-content {
+  max-width: 100%; /* Update max-width to utilize the full slide */
+  padding: 20px;
+  padding-bottom: 70px;
+}
+.packages-list {
+  display: flex; /* Use Flexbox to display packages horizontally */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Center the packages horizontally */
+  align-items: center; /* Add this to center the packages vertically */
+  height: 100%; /* Add this to occupy the full slide height */
+}
+
+.package-card {
+  flex: 0 0 calc(33.33% - 20px); /* Show three packages in a row */
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  color: #fff;
+  position: relative; /* Add this to set a reference for absolute positioning */
+  overflow: hidden; /* Add this to hide overflow */
+}
+
+.package-card .payment-btn {
+  /* Styles for the payment button */
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f39c12;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  z-index: 2;
+}
+
+.package-card .payment-btn .button-text {
+  display: block;
+}
+
+.package-card:hover .payment-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.package-card .payment-btn .glow {
+  /* The same glowing effect as the hero button */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: blue;
+  pointer-events: none;
+}
+
+.package-card .payment-btn:hover .glow {
+  opacity: 1;
+}
+
+.package-card h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.package-card p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.package-price {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#payment-slide h2, h3 {
+  color: white;
+  font-size: 40px;
+  margin-bottom: 40px;
+  animation: glow 2s infinite alternate;
+  text-shadow: 0 0 10px rgba(30, 155, 255, 0.6); /* Lower glow */
+}
+
+/* Rest of the styles for payment slide */
+/* feedback slide */
+#feedback-slide {
+  background-image: url("feedback.png");
+}
+
+#feedback-slide .slide-content {
+  max-width: 800px; /* Update max-width to make the content smaller */
+  padding: 20px; /* Adjust the padding as needed */
+}
+#feedback-slide h2{
+  color: #fff; /* Set the text color to white */
+  font-size: 40px; /* Adjust the font size as needed */
+  text-shadow: 0 0 10px rgba(30, 155, 255, 0.6); /* Add a subtle glow effect */
+}
+#feedback-slide p {
+  color: #fff; /* Set the text color to white */
+  font-size: 24px; /* Adjust the font size for the paragraph */
+  text-shadow: 0 0 10px rgba(30, 155, 255, 0.6); /* Add a subtle glow effect */
+}
+
+.feedback-form {
+  max-width: 600px; /* Adjust the width of the feedback form container */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.feedback-form textarea {
+  width: 100%; /* Make the textarea fill the entire width of the container */
+  height: 200px; /* Adjust the height as needed */
+  font-family: 'Roboto', sans-serif; /* Use a different font for the text area */
+  font-size: 18px; /* Set a font size for the text area */
+  resize: none; /* Disable text area resizing */
+}
+.feedback-form button {
+  background-color: rgba(255, 255, 255, 0.8); /* Soft white background for the button */
+  color: #000; /* Black text color for the button */
+  margin-left: 0; /* Remove the left margin */
+}
+
+.feedback-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+}
+#feedback-slide .slide {
+  height: 20vh; /* Set a fixed height for the feedback slide */
+  overflow: hidden; /* Hide any overflow */
+}
+
+.feedback-textarea {
+  width: 100%;
+  height: 300px; /* Increase the height for a bigger textarea */
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.feedback-submit {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #fff;
+  background-color: transparent; /* Make the button transparent */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative; /* Add position for pseudo-elements */
+}
+
+.feedback-submit::before,
+.feedback-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  border-radius: 8px;
+  z-index: -1;
+}
+
+.feedback-submit::before {
+  background: white;
+  animation: glowing-border 2s ease infinite;
+}
+
+.feedback-submit::after {
+  background: white;
+  animation: glowing-border 3s ease infinite;
+}
+
+.feedback-submit:hover::before {
+  opacity: 1;
+}
+
+.feedback-submit:hover::after {
+  opacity: 1;
+}
+
+
+/* Glowing Button styles */
+.glowing-btn {
+  position: relative;
+  margin-left: 400px;
+  color: var(--glow-color);
+  cursor: pointer;
+  padding: 0.35em 1em;
+  border: 0.15em solid var(--glow-color);
+  border-radius: 0.45em;
+  background: none;
+  perspective: 2em;
+  font-family: "Raleway", sans-serif;
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: 1em;
+  -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+    0px 0px 0.5em 0px var(--glow-color);
+  animation: border-flicker 2s linear infinite;
+}
+
+.glowing-txt {
+  float: left;
+  margin-right: -0.8em;
+  -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em var(--glow-color);
+  -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+    0 0 0.45em var(--glow-color);
+  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+  animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+  opacity: 0.5;
+  animation: faulty-flicker 2s linear infinite;
+}
+
+.glowing-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+  filter: blur(1em);
+  transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+  background: var(--glow-color);
+  pointer-events: none;
+}
+
+.glowing-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: -1;
+  background-color: var(--glow-color);
+  box-shadow: 0 0 2em 0.2em var(--glow-color);
+  transition: opacity 100ms linear;
+}
+
+.glowing-btn:hover {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: none;
+  animation: none;
+}
+
+.glowing-btn:hover .glowing-txt {
+  animation: none;
+}
+
+.glowing-btn:hover .faulty-letter {
+  animation: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.glowing-btn:hover:before {
+  filter: blur(1.5em);
+  opacity: 1;
+}
+
+.glowing-btn:hover:after {
+  opacity: 1;
+}
+
+@keyframes faulty-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 0.1;
+  }
+  4% {
+    opacity: 0.5;
+  }
+  19% {
+    opacity: 0.5;
+  }
+  21% {
+    opacity: 0.1;
+  }
+  23% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  83% {
+    opacity: 0.4;
+  }
+  87% {
+    opacity: 1;
+  }
+}
+
+@keyframes text-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.1;
+  }
+  9% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  72% {
+    opacity: 0.2;
+  }
+  77% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes border-flicker {
+  0% {
+    opacity: 0.1;
+  }
+  2% {
+    opacity: 1;
+  }
+  4% {
+    opacity: 0.1;
+  }
+  8% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .glowing-btn {
+    font-size: 1em;
+  }
+}

@@ -1,10 +1,5 @@
-pipeline {
+ pipeline {
     agent any
-
-    environment {
-        dhouiouialaa = credentials('DOCKERHUB_USERNAME')
-        Liwaliwa007 = credentials('DOCKERHUB_PASSWORD')
-    }
 
     stages {
         stage('Build Docker Image') {
@@ -20,11 +15,17 @@ pipeline {
             steps {
                 script {
                     // Push the Docker image to Docker Hub
-                    sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
-                    sh 'docker push fitness'
+                    withCredentials([[
+                        $class: 'UsernamePasswordMultiBinding',
+                        credentialsId: '100',
+                        usernameVariable: 'DOCKERHUB_USERNAME',
+                        passwordVariable: 'DOCKERHUB8PASSWORD'
+                    ]]) {
+                        sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        sh 'docker push fitness'
+                    }
                 }
             }
         }
     }
 }
-

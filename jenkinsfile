@@ -10,7 +10,7 @@ pipeline {
 
         stage('Serve Website') {
             steps {
-                sh 'python -m http.server 8080 &'
+                sh '+ python3 -m http.server 8080'
             }
         }
 
@@ -29,8 +29,8 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: '100', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                withCredentials([usernamePassword(credentialsId: '100', usernameVariable: 'dhouiouialaa', passwordVariable: 'Liwaliwa007')]) {
+                    sh 'docker login -u "dhouiouialaa" -p "Liwaliwa007"'
                 }
                 sh 'docker push fitness'
             }

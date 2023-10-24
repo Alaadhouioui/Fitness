@@ -14,16 +14,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    // Push the Docker image to Docker Hub
-                    withCredentials([[
-                        $class: 'UsernamePasswordMultiBinding',
-                        credentialsId: 'DOCKERHUB_CRENDETIAL',
-                        usernameVariable: 'DOCKERHUB_USERNAME',
-                        passwordVariable: 'DOCKERHUB_PASSWORD' // Corrected variable name
-                    ]]) {
-                        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD' // Removed double quotes
-                        sh 'docker push fitness'
-                    }
+                    // Push the Docker image to Docker Hub using static credentials
+                    sh 'docker login -u dhouiouialaa -p Liwaliwa007'
+                    sh 'docker push fitness'
                 }
             }
         }

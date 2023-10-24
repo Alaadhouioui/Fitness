@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
     agent any
 
     stages {
@@ -17,15 +17,12 @@
                     // Push the Docker image to Docker Hub
                     withCredentials([[
                         $class: 'UsernamePasswordMultiBinding',
-                        credentialsId: '100',
+                        credentialsId: 'DOCKERHUB_CRENDETIAL', 
                         usernameVariable: 'DOCKERHUB_USERNAME',
-                        passwordVariable: 'DOCKERHUB8PASSWORD'
+                        passwordVariable: 'DOCKERHUB_PASSWORD' // Corrected variable name
                     ]]) {
-                        sh 'docker login -u "dhouiouialaa" -p "Liwaliwa007"'
+                        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD' // Removed double quotes
                         sh 'docker push fitness'
                     }
                 }
             }
-        }
-    }
-}

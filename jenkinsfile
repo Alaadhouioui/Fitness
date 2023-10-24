@@ -17,7 +17,7 @@ pipeline {
                     // Push the Docker image to Docker Hub
                     withCredentials([[
                         $class: 'UsernamePasswordMultiBinding',
-                        credentialsId: 'DOCKERHUB_CRENDETIAL', 
+                        credentialsId: 'DOCKERHUB_CRENDETIAL',
                         usernameVariable: 'DOCKERHUB_USERNAME',
                         passwordVariable: 'DOCKERHUB_PASSWORD' // Corrected variable name
                     ]]) {
@@ -26,3 +26,7 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+}
+

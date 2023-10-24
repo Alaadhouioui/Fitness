@@ -16,7 +16,7 @@ pipeline {
                 script {
                     // Push the Docker image to Docker Hub using static credentials
                     sh 'docker login -u dhouiouialaa -p liwaliwa007'
-                    sh 'docker push fitness2'
+                    sh 'docker push dhouiouialaa/fitness2'
                 }
             }
         }

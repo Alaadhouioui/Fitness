@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Push the Docker image to Docker Hub using static credentials
-                    sh 'docker login -u dhouiouialaa -p Liwaliwa007'
+                    sh 'docker login -u dhouiouialaa -p liwaliwa007'
                     sh 'docker push fitness'
                 }
             }

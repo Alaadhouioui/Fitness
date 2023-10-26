@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build a Docker image for your application
+                    sh 'docker build -t your-image-name .'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // Push the Docker image to Docker Hub
+                    withCredentials([[
+                        $class: 'UsernamePasswordMultiBinding',
+                        credentialsId: 'your-dockerhub-credentials-id',
+                        usernameVariable: 'dhouiouialaa',
+                        passwordVariable: 'DOCKERHUB_PASSWORD                    ]]) {
+                        sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        sh 'docker push your-image-name'
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -5,8 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build a Docker image for your application
-                    sh 'docker build -t fitness2 .'
+                    sh 'docker build -t dhouiouialaa/fitness2:latest .'
                 }
             }
         }
@@ -14,9 +13,8 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    // Push the Docker image to Docker Hub using static credentials
                     sh 'docker login -u dhouiouialaa -p liwaliwa007'
-                    sh 'docker push dhouiouialaa/fitness2'
+                    sh 'docker push dhouiouialaa/fitness2:latest'
                 }
             }
         }
